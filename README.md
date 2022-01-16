@@ -16,6 +16,7 @@
 ### Association
 
 - has_many :orders
+- belongs_to :item
 
 ## items テーブル
 
@@ -29,10 +30,11 @@
 |prefecture_id|integer|null: false|
 |scheduled_delivery_id|integer|null: false|
 |price|integer|null: false|
+|user|references|null: false, foreign_key: true|
 
 ### Association
 
-- has_one :addresses
+- has_many :users
 - has_one :order
 
 ## orders テーブル
@@ -40,7 +42,12 @@
 |Column|Type|Options|
 |------|----|-------|
 |user|references|null: false, foreign_key: true|
-|item|references|null: false, foreign_key: true|
+|address|references|null: false, foreign_key: true|
+
+### Association
+
+- belongs_to :user
+- belongs_to :address
 
 ## addresses テーブル
 
@@ -52,8 +59,7 @@
 |addresses|string|null: false|
 |building|string|
 |phone-number|string|null: false|
-|item|references|null: false, foreign_key: true|
 
 ### Association
 
-- belongs_to :item
+- has_many :orders
