@@ -11,11 +11,10 @@
 |first_name|string|null: false|
 |last_name_kana|string|null: false|
 |first_name_kana|string|null: false|
-|birth_date_id|integer|null: false|
+|birth_date|datetime|null: false|
 
 ### Association
 
-- has_many :items
 - has_many :orders
 
 ## items テーブル
@@ -30,14 +29,20 @@
 |prefecture_id|integer|null: false|
 |scheduled_delivery_id|integer|null: false|
 |price|integer|null: false|
-|user|references|null: false, foreign_key: true|
 
 ### Association
 
-- belongs_to :users
-- has_one :orders
+- has_one :addresses
+- has_one :order
 
 ## orders テーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user|references|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
+
+## addresses テーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -47,9 +52,8 @@
 |addresses|string|null: false|
 |building|string|
 |phone-number|string|null: false|
-|user|references|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
 
 ### Association
 
-- belongs_to :users
-- belongs_to :items
+- belongs_to :item
