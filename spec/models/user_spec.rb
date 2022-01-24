@@ -45,7 +45,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
       end
       it 'passwordが数字のみでは保存できない' do
-        @user.password = '123456'
+        @user.password = 123456
         @user.valid?
         expect(@user.errors.full_messages).to include("Password include both letters and numbers")
       end
