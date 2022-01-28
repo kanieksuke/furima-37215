@@ -15,7 +15,6 @@ class Item < ApplicationRecord
     validates :info
     validates :price, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is invalid"}
   end
-
   validates :category_id, numericality: { other_than: 1, message: "can't be blank"}
   validates :sales_status_id, numericality: { other_than: 1, message: "can't be blank"}
   validates :shipping_fee_status_id, numericality: { other_than: 1, message: "can't be blank"}
