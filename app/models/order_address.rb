@@ -1,6 +1,6 @@
 class OrderAddress
   include ActiveModel::Model
-  attr_accessor :postal_code, :prefecture, :city, :addresses, :building, :phone_number, :user_id, :item_id
+  attr_accessor :postal_code, :prefecture, :city, :addresses, :building, :phone_number, :user_id, :item_id, :token
 
   with_options presence: true do
     validates :user_id
@@ -9,6 +9,7 @@ class OrderAddress
     validates :city
     validates :addresses
     validates :phone_number, format: {with: /\A\d{10,11}\z/, message: "is invalid. 10 digits or more and 11 digits or less"}
+    validates :token
   end
 
   validates :prefecture, numericality: {other_than: 1, message: "can't be blank"}
